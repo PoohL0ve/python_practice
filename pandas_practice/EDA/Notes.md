@@ -172,3 +172,6 @@ salary_labels = ['entry', 'mid', 'senior', 'exec']
 salary_ranges = [0, twenty_fifth, salaries_median, seventy_fifth, salaries["Salary_USD"].max()]
 salaries['salary_level'] = pd.cut(salaries['Salary_USD'], bins=salary_ranges, labels=salary_labels)
 ```
+
+Hypothesis testing requires a question or hypothesis and a decision on what statistical test to use, prior to collecting the data.
+It detects relationships, differences, and patterns. It involves choosing a sample, calculating how much data points to use, and deciding what statistical test to run.
