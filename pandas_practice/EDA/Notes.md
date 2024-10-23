@@ -116,3 +116,37 @@ wages[wages['Salary_USD'] < lower_bound | shops['Salary_USD'] > upper_bound] \
 ```
 
 ## Relationships in Data
+Some columns in a dataset relate to eachother. For instance, a dataset about a football/soccer club with columns for dates and upgrade_time may relate. That is, one will show the date in a string format, while the other may show the number of years before an update. The datetime column can be changed from string object to a datetime object:
+```python
+football_read = pd.read_csv('../football_data.csv', parse_dates=['date'])
+football.dtypes
+```
+The date column can also be updated after the data frame is created using **pd.to_datetime()**. Additionally, if column were in the form of year, month, and day; The method can be used to create one column using thos values:
+```python
+football['date_time'] = pd.to_datetime(football['month', 'day', 'year'])
+```
+The attributes **dt.month, dt.day, and dt.year** can be used to extract the specific part of a date.
+```python
+football['match_month'] = football['date_time'].dt.month
+```
+Line plots are great to show the relationship between columns:
+```python
+sns.lineplot(data=football, x='match_month', y='upgrade_time')
+```
+
+Correlation describes the strenght and direction between two variables, which helps with predicting outcomes. The **corr()** method is used to show this in datasets.
+- Negative : as one variable increases, another decreases;
+- Value close to 0 : shows a weak relationship;
+- Value close to 1/-1: shows stronger relationships.
+The method calculates the Pearson correlation, measuring the linear relationship. The heatmap() graph is colour-coded, where lighter colours are closer to the negative:
+```python
+sns.heatmap(football.corr(), annot=True)
+```
+The **pairplot()** graph aggregates several scatterplots into one visual:
+```python
+sns.pairplot(data=football, vars=['year', 'trophies'])
+```
+The Kernel Deensity Estimate (KDE) plots allows visualisation of categorical data, showing their relationships.
+```python
+sns.kdeplot(data=football, x='update_time', hue='trophies', cut=0, cumulative=True)  # The cut argument states where to cut off the graph plots
+```
