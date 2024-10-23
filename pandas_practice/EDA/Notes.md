@@ -4,9 +4,9 @@ There are a few quick methods to help you understand your dataset:
 - __describe()__ : shows a series of summary statistics for numeric data sets;
 - __info()__ : displays the data types in columns;
 - __head()__ : returns the first few columns and fields of the dataset;
-- __tail()__ : returns the last few column and fields of the dataset.
+- __tail()__ : returns the last few columns and fields of the dataset.
 
-Data validation is about testing the accuracy of the data in terms of the column values needed. There are quick a few methods and attributes in pandas to help with this:
+Data validation is about testing the accuracy of the data in terms of the column values needed. There are a few methods and attributes in pandas to help with this:
 - __dtypes__ : States what type of data is stored in a column;
 - __astype()__ : Easily converts a data type to another of a specified column;
 - __isin()__ : returns True/False for a specified value in a column;
@@ -16,7 +16,7 @@ Data validation is about testing the accuracy of the data in terms of the column
 cars.dtypes
 cars['Cost_USD'].astype(float)
 cars['Brand'].isin(['Ford', 'Toyota'])  # ~ reverse True/False
-cars.select_dtypes('number')
+cars.select_dtypes('number')  # returns column with type int and float
 cars['Years'].min()
 ```
 
@@ -37,3 +37,82 @@ cars.groupby('Brand').agg(
     median_year=('year', 'median)
 )
 ```
+
+## Data Cleaning
+Data cleaning is a fun and vital part of data analysis. It is the process of finding inaccurate, incomplete, and inconsistent data and handling them. This process is needed as it makes the data more reliable to use for analysis.
+
+There are numerous ways to deal with missing values such as removing them or replacing them with some other value. The first step is to check if the dataset contains any missing values using the **isna()** method, which by itself returns a list of columns; however, in combination with sum(), it shows how many missing values are in the dataset per column.
+```python
+nobel.isna().sum()  # Number of NA values in columns
+
+# Drop the columns that do not meet a 5% threshold
+threshold = len(shops) * 0.05  # gives the upper-limit needed
+# List of columns to drop
+drop_cols = shops.columns[shops.isna().sum() <= threshold]
+shops.dropna(subet=drop_cols, inplace=True)  # removes the columns from the dataset
+
+# Fill values that are missing with a median() value
+prices_dict = cars.groupby('Brand')['Cost_USD'].median().to_dict()
+# Use the map() to input the median for the missing values
+cars['Cost_USD'] = cars['Cost_USD'].fillna(cars['Brand'].map(prices_dict))
+```
+
+Useful methods to check the number of values and uniques values in a column:
+- __nunique()__ : returns the number of unique values;
+- __value_counts()__ : return the number of different values in a column. For instance, if a column name is Animal, it can return cats = 114 and dogs = 431.
+
+The **str.contains()** searches for specific values, which can be used to filter a dataset or extract the values:
+```python
+drinks['Type'].str.contains('Alcohol')  # returns True/False 
+
+# To search for more than one value use a pipe between the values
+drinks['Type'].str.contains('Milk|Beer')
+# Use the carrat ^ symbol to find values that start with a specific value
+drink['Type'].str.contains('^Mix')
+
+# Find multiple phrases
+drinks_list = ['Beer', 'Vodka', 'Rum n Coke', 'Magarita', 'Mix n Go']
+beer = 'Beer|Brew'
+vodka = 'Ice|Vodka'
+rum = 'Rum|Mix with Coke'
+mag = 'Sunset|Colours'
+mix = 'Mix Drinks'  # Conditions to search
+conditions = [
+    (drinks['Type'].str.contains(beer)),
+    (drinks['Type'].str.contains(vodka)),
+    (drinks['Type'].str.contains(rum)),
+    (drinks['Type'].str.contains(mag)),
+    (drinks['Type'].str.contains(mix))
+]
+# Create the new column
+drinks['Drink_Type'] = np.select(conditions, drink_list, default='Water')
+```
+
+String values can be converted to numeric values by following two steps:
+```python
+cars['Price_in_EU'] = cars['Price_in_EU'].str.replace(',', '')
+cars['Price_in_EU'] = cars['Price_in_EU'].astype(float)
+```
+
+A new column can be created directly using summary statistics in pandas:
+- Use the groupby() method;
+- Select the column that the stat will be used on;
+- Use the transform method;
+- Use a lambda function in the transform method
+```python
+wages['mean'] = wages.groupby('Experience')['Salary_USD'].tranform(lambda x: x.mean())
+```
+
+Outliers are numeric values that are outside those calculated in percentiles. That is, they are some stretch away from the minimum and maximum calculated values. To check for outliers, you'll need to know the 75th and 25th percentile:
+```python
+seventy_fifth = wages['Salary_USD'].quantile(0.75)
+twenty_fifth = wages['Salary_USD'].quantile(0.25)
+iqr = seventy_fifth - twenty_fifth
+# Outliers outside the ranges
+lower_bound = twenty_fifth - (iqr * 1.5)
+upper_bound = seventy_fifth + (iqr * 1.5)
+wages[wages['Salary_USD'] < lower_bound | shops['Salary_USD'] > upper_bound] \
+    [['Experience', 'Location', 'Salary_USD']]
+```
+
+## Relationships in Data
