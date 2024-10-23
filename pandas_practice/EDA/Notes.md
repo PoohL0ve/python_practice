@@ -150,3 +150,25 @@ The Kernel Deensity Estimate (KDE) plots allows visualisation of categorical dat
 ```python
 sns.kdeplot(data=football, x='update_time', hue='trophies', cut=0, cumulative=True)  # The cut argument states where to cut off the graph plots
 ```
+
+## Useful Techniques
+The **normalize** argument in the value_counts() method shows the relative frequenccy of values. Cross_tabulation can show how observations occur in combination.
+```python
+print(salaries['Wages'].value_counts(normalize=True))
+print(pd.crosstab(salaries["Company_Size"], salaries["Experience"]))
+
+# Calculate the mean 
+print(pd.crosstab(
+    salaries['Job_Category'], salaries['Company_Size'],
+    values=salaries['Salary_USD'], aggfunc='mean'
+))
+```
+The **dt.weekday** attribute uses numbers to show the date where Monday is represented as 0.
+
+New features can be created using the **pd.cut** method:
+```python
+salary_labels = ['entry', 'mid', 'senior', 'exec']
+# Create the salary ranges list
+salary_ranges = [0, twenty_fifth, salaries_median, seventy_fifth, salaries["Salary_USD"].max()]
+salaries['salary_level'] = pd.cut(salaries['Salary_USD'], bins=salary_ranges, labels=salary_labels)
+```
