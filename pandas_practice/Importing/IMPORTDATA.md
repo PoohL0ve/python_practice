@@ -109,3 +109,44 @@ import scipy.io
 filename = 'engineering.mat'
 mat = scipy.io.loadmat(filename)
 ```
+
+## Relational Databases
+A database consists of tables, where each table represent one order type. Each row should have a primary identifier. The tables are linked through primary keys as foreign keys. Popular Database Management Systems are PostreSQL, MySQL, and SQLite which use the Structured Query Language (SQL).
+
+SQLite is fast and simple to use. SQLALchemy can be used to create a database engine.
+```python
+from sqlalchemy import create_engine
+import pandas as pd
+engine = create_engine('sqlite:///Northwind.sqlite')
+table_names = engine.table_names()  # list of tables
+
+# connect to the database
+connect = engine.connect()
+# Query: get all column in a table
+query = connect.execute('SELECT * FROM ORDERS')
+# Save the result as a DF uing fetchall()
+df = pd.DataFrame(query.fetchall())  # Fetches all rows
+df.columns = query.keys()  # Assign the names of the columns
+connection.close()  # close the connection
+```
+The **with** keyword can also be used to automatically close the connection.
+```python
+with engine.connect() as con:
+    query = con.execute('SELECT OrderID, OrderDate, ShipName FROM ORDERS')
+    df = pd.DataFrame(query.fetchmany(size=5))  # 5 rows
+    df.columns = rs.keys()
+```
+
+Pandas allows the table to be queried in one line:
+```python
+df = pd.read_sql_query('SELECT * FROM Orders WHERE Value >= 150 ORDER BY Date', engine)
+# The engine still has to be created and connected
+```
+
+Creating a DataFrame by joining two tables with pandas
+```python
+from sqlalchemy import create_engine
+import pandas as pd
+engine = create_engine('sqlite:///Northwind.sqlite')
+df = pd.read_sql_query('SELECT OrderID, CompanyName FROM Orders INNER JOIN Customers on Orders.CustomerId = Customers.CustomerId', engine)
+print(df.head())
