@@ -50,6 +50,7 @@ with open('dance.json', 'r') as json_file:
     data = json.load(json_file)
 
 # Iterate and print key-value pairs
+# json.loads() for parsing strings
 for key, value in data.items():
     print(f'{key}: {value}')
 ```
