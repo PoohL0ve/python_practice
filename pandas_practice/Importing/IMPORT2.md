@@ -32,6 +32,48 @@ Beautiful Soup is a library used to parse and extract structured data from HTML.
 from bs4 import BeautifulSoup
 import requests
 url = 'https://www.umassglobal.edu/'
-r = requests.get(url)  # packages the requests, send the request, and packages the response
+r = requests.get(url)  # packages the requests, send the request, and catches the response
 html = r.text
 soup = BeautifulSoup(html)
+```
+
+## Interacting with APIs
+Application Programming Interfaces are protocols and routines used for creating and interacting with software applications. JavaScript Object Notation (JSON) is used for real-time server to browser communication and is human readable. They are similar to dictionaries:
+```js
+{'Songs': 'Rock with You',
+'Dance': 'MJ'}
+```
+JSON files can be loaded in Python:
+```python
+import json
+with open('dance.json', 'r') as json_file:
+    data = json.load(json_file)
+
+# Iterate and print key-value pairs
+for key, value in data.items():
+    print(f'{key}: {value}')
+```
+Connecting to an API in Python
+```python
+import requests
+# The ? in the URL is a query where t means title
+url = 'http://www.funtimeapi.com?t=hackers'
+r = requests.get(url)
+json_data = r.json()
+for key, value in json_data.items():
+    print(f'{key}: {value}')
+```
+
+APIs and Authentication
+```python
+import tweepy, json
+access_token
+acess_token_secret
+consumer_key
+consumer_secret
+# Stream live data
+stream = tweepy.Stream(consumer_key, consumer_secret, access_token, access_token_secret)
+# Filter by keywords
+stream.filter(track=['lgbtq', 'love'])
+```
+**NB** : Notes taken from DataCamp's Intermediate Importing Data in Python course.
