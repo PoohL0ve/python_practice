@@ -65,3 +65,27 @@ Operators are the symbols used to do the computations and the operands are the v
     - ~ : NOT Negates the values;
 
 The precendence of operators follows the PEDMAS rule with the logical operators having the lowest precedence.
+
+## Conditional Executions
+Python Boolean values are True and False, in numeric terms they are 1 and 0 respectively. A variable can store a Boolean value as is or using the *is* operator:
+```py
+flag = True
+if flag:
+    print("Flag is stunning!")
+```
+The *bool()* function converts any data type to a Boolean where True is for most values unless they are empty, 0, or the None value. Pythin has three logical operators in and, or and not. __Short circuit evaluation__ is the process of stopping an execution when the truth value is determined.
+
+Conditional statements allow us to check the conditions of a program and change its behaviour. They can be alternative, chained, and nested using *if, elif, and else*:
+```py
+# Single condition
+if x > 0 < 10: print('Positive')
+number = 5
+number if number % 2 == 0 else 1
+
+# chained statement
+value = 11
+if value > 5 and value < 10:
+    print('Under ten')
+else:
+    print('Not applicable')
+```
