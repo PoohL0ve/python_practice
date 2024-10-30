@@ -15,6 +15,7 @@ Python is a translated language created by **Guido van Rossum** as a hobby in 19
 
 ### Reserved Keywords
 Reserved keywords are words that cannot be used as variables because Python use them for specific scenarios. There are 32 reserved words in Python as listed in the table:
+<table style="margin-left: 50%, margin-right: 50%">
 |      |      |      |      |
 |:----:|:----:|:----:|:----:|
 |and   |elif |if |pass|
@@ -25,3 +26,4 @@ Reserved keywords are words that cannot be used as variables because Python use 
 |continue |for |nonlocal |while|
 |def |from |not |with|
 |del |global |or |yield|
+</tablle>
