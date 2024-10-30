@@ -38,3 +38,18 @@ drinks = ['whisky', 'magarita', 'beer', 'water', 'soda']
 print(*drinks, sep=',')
 # It prints: whisky,magarita,beer,water,soda
 ```
+
+## Operators and Operands
+Operators are the symbols used to do the computations and the operands are the values the operators are being used on. Python has 7 types of operators as listed in the table:
+|   Operator Type    |       Description     |
+|:------------------:|:----------------------|
+|    Arithmetic      | Used to perform Mathematical operators:
+- + : For addion and string concatenation;
+- - : For substraction
+- * : Multiplication and string repetition;
+- / : Float division;
+- // : Floor division; returns an integer;
+- % : Modulus, returns the remainder;
+- ** : Exponentiation |
+|    Assignment       | Assigns values to variables they include =, *=, +=, -=, and ^= |
+|   Relational  | Used to compare values such as: ==, !=, >, <, >=, <= |
