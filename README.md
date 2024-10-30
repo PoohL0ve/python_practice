@@ -15,7 +15,6 @@ Python is a translated language created by **Guido van Rossum** as a hobby in 19
 
 ### Reserved Keywords
 Reserved keywords are words that cannot be used as variables because Python use them for specific scenarios. There are 32 reserved words in Python as listed in the table:
-<table style="margin-left: 50%, margin-right: 50%">
 |      |      |      |      |
 |:----:|:----:|:----:|:----:|
 |and   |elif |if |pass|
@@ -26,4 +25,32 @@ Reserved keywords are words that cannot be used as variables because Python use 
 |continue |for |nonlocal |while|
 |def |from |not |with|
 |del |global |or |yield|
-</tablle>
+
+### Python Interpreter
+The Python interpreter is what executes the Python script and basic programs. As of October 29th, 2024 the command **python3** opens the interpreter in the command line. The interpreter can be closed using *exit(), quit() or control + D*
+Interactive move is used when executing simple expressions in the interpreter, while script mode is used when a file ending in *.py* is created and used.
+
+### Important Programming Terminology
+__Comments__ are used to explain a program or some parts of code. It is also a useful way for programmers working on the same project to communicate. Python has two types of comments in single line comments that starts with the *#* symbol and docstrings. Docstrings are used to define a function or a Python program.
+```py
+# This is a single line comment
+"""
+    This is a mult-line or doctsring
+"""
+```
+
+The __syntax__ of a programming language determines how it should be written and breaking this rule results in a *SyntaxError*. This means that the interpreter is unable to understand what the programmer meant.
+
+A __token__ is the simplest element in a program such as a number or variable. An __expression__ is a block of code that can be made up of variables, operators and operands and values that results in a reduced value (determined data type). In other words, the expression is the part of a program that is evaluated when the program is executed. A __block__ is a group of statements that are at the same level of each other, with the head of the block being at the top and the code to be executed is indented. A __statement__ is a group of expressions designed to be executed but not reduced to a value as the expression is the evaluated part.
+```py
+name = 'python'  # statement
+# The example below contains a block of code
+for letter in name:  # This is the blcok's header
+    # This is the block's body
+    add_year = letter + '2024'  # expression
+    print(add_year)
+```
+__Debugging__ is the skill of finding and fixing bugs and errors in code. There are three main types of errors:
+- __Syntax Error__ : The rules of the language have been broken;
+- __Semantic Error__ : The output of the program is not what was expected or required;
+- __Run Time Error__ : Exceptions that occurs after the program runs.
