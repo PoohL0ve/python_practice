@@ -40,16 +40,28 @@ print(*drinks, sep=',')
 ```
 
 ## Operators and Operands
-Operators are the symbols used to do the computations and the operands are the values the operators are being used on. Python has 7 types of operators as listed in the table:
-|   Operator Type    |       Description     |
-|:------------------:|:----------------------|
-|    Arithmetic      | Used to perform Mathematical operators:
-- + : For addion and string concatenation;
-- - : For substraction
-- * : Multiplication and string repetition;
-- / : Float division;
-- // : Floor division; returns an integer;
-- % : Modulus, returns the remainder;
-- ** : Exponentiation |
-|    Assignment       | Assigns values to variables they include =, *=, +=, -=, and ^= |
-|   Relational  | Used to compare values such as: ==, !=, >, <, >=, <= |
+Operators are the symbols used to do the computations and the operands are the values the operators are being used on. Python has 7 types of operators:
+1. __Arithmetic Operators__ : Used for Mathematical computations and include:
+    - + : Used for addition and string Concatenation;
+    - - : Used for substraction;
+    - * : Multiplication and string repetition;
+    - / : Float division;
+    - // : Floor division, returns an integer;
+    - % : Modulus, retruns the remainder;
+    - ** : Exponentiation.
+2. __Assignment Opertators__ : Assigns a value to a variable:
+    - = : Binds a values;
+    - *= : Multiplies a value to another and store it;
+    - += : Adds and stores;
+    - -= : Substracts and stores;
+    - ^= : 
+3. __Relational Operators__ : Used to compare values and includes ==, !=, >, >=, <, and <=
+4. __Identity Operators__ : Compares objects of the same memory location using *is* and *is not*
+5. __Membership Operators__ : Tests if an item or object is contained in a sequence using *in* and *not in*
+6. __Bitwise Operators__ : Used to compare Binary values such as:
+    - & : AND returns True if both are True;
+    - | : OR returns True if either are True;
+    - ^ : XOR Exclusive OR, ONLY ONE has to be True;
+    - ~ : NOT Negates the values;
+
+The precendence of operators follows the PEDMAS rule with the logical operators having the lowest precedence.
