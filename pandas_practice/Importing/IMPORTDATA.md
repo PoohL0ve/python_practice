@@ -3,7 +3,7 @@
 # Flat Files
 Basic text files end with the extension ".txt" and store simple pieces of data. They can be open and read in Python using the open() method:
 ```python
-filename = 'Never Learning'
+filename = 'Never Learning.txt'
 file = open(filename, more=r)
 text = file.read()
 file.close()  # always close the method
@@ -18,7 +18,7 @@ with open(filename, 'r') as file:
 ```
 The "with" keyword is a content manager that allows you to bind the contents of a file to a variable.
 
-Flat files are text files that contain records in the form of a table (rosw and columns). Values are separated by a delimiter like a comma or dash. They are normally imported with pandas or numpy packages. Numpy arrays are the standard for importing numerical data in Python.
+Flat files are text files that contain records in the form of a table (rows and columns). Values are separated by a delimiter like a comma or dash. They are normally imported with pandas or numpy packages. Numpy arrays are the standard for importing numerical data in Python.
 ```python
 import numpy as np
 filename = 'numbers.txt'
