@@ -1,4 +1,22 @@
 # Exploratory Data Analysis
+
+## Understanding AI (Simple)
+Artificial Intelligence is a program that can sense, reason, act and adapt. Machine Learning is a subset of AI that focuses on algorithms whose performance improve as they are exposed to more data overtime. Deep Learning is a subset of ML where neural networks learn from data.
+
+Machine Learning is the study and construction of programs that are not explicitly programmed but improve overtime with the exposion of data. Machine learning can be supervised focuses on predictions or unsupervised learning where it focuses on structure. Machine Learning Workflow:
+- Problem Statement
+- Data Collection
+- Data Exploration and Preprocessing
+- Modeling
+- Validation
+- Decision Making and Deployment
+
+ML Vocabulary: The target is the value that you are trying to predict, while the features are explanatory variables used for prediction. An example is an observation about a data point. A label is the value of a target for a single data point.
+
+
+
+
+## What is EDA?
 EDA is the process of reviewing and cleaning data to gain insights and test hypotheses.
 There are a few quick methods to help you understand your dataset:
 - __describe()__ : shows a series of summary statistics for numeric data sets;
