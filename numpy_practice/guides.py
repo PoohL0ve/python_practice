@@ -4,11 +4,19 @@
 import numpy as np
 
 # Create Arrays
+print('Array Creation')
 data: list = [4, 8, 29, 56, 77]
 data_array = np.array(data)
 
+two_dim_array = np.array([[2, 5], [3, 4]])
+print(f'Two Dimensional Array:\n{two_dim_array}\n')
+
 values: list = [9, 0, 6, 2, 23]
 values_array = np.array(values)
+
+zero_values = np.zeros((3, 4), dtype=int)  # Specify data type, default is float
+print(f'A 3 by 4 integer array of zeros:\n{zero_values}')
+print('****************************')
 
 # Arithmetic
 add_both = data_array + values_array
