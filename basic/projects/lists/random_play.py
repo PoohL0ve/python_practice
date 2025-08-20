@@ -19,6 +19,14 @@ def all_targets_hit(attempts_for_each_target: list) -> bool:
     
     return False
 
+def extract_names(message: str) -> list:
+    # write your code here
+    msg_list = message.split(",")
+
+    no_space = [item.strip() for item in msg_list if item.strip()]
+
+    return no_space
+
 if __name__ == "__main__":
     shots = [
         [True, False, False],
