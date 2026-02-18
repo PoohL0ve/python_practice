@@ -270,6 +270,7 @@ __Status codes__ tells the client:
 - whether to show errors
 - whether logic should continue
 
+<div style="margin-left: auto, margin-rigth: auto;">
 |Group   | Types |
 |:-----:|:-----------|
 |`Information`| <ul> <li>__100__: Generic</li> </ul> |
@@ -277,6 +278,7 @@ __Status codes__ tells the client:
 |`Redirect`| <ul> <li>__304__: Not Modified</li> </ul> |
 |`Client` | <ul> <li>__400__: Bad Request</li> <li>__401__: Not authorised</li> <li>__403__: Forbidden</li> <li>__404__: Not Found</li> <li>__422__: Can't process (validation failed)</li> </ul> |
 |`Server` | <ul> <li>__500__: Bug (internal server error)</li> <li></li> <li>__503__: Service unavailable (temporary failure)</li> </ul> |
+</div>
 
 Status codes are a parameter of the decoration and not of the function:
 ```python
@@ -333,7 +335,17 @@ __N.B__: Use Request/Response sparingly and intentionally.
 
 __pycache__ contains Python’s temporary compiled files and should never be version-controlled.
 
+There's also the `HTMLRessponse` class that allows clean data for the client to view.
+```python
+from fastapi import FastAPI
+from fastapi.response import HTMLResponse
 
+app = FastAPI()
+
+@app.get("/", response_class=HTMLResponse)
+def home():
+  return "<h1>Welcome to your Life!</h1>"
+```
 ## PHASE 2 — DATA AS CONTRACT
 `Goal`: Understand why FastAPI feels “strict” and why that’s a feature.
 This phase is about trust between systems.
